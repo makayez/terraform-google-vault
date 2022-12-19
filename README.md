@@ -53,7 +53,7 @@ module "vault" {
     google = google
   }
 
-  source      = "git::https://github.com/mbrancato/terraform-google-vault.git"
+  source      = "git::https://github.com/makayez/terraform-google-vault.git"
   name        = "vault"
   project     = data.google_client_config.current.project
   location    = data.google_client_config.current.region
