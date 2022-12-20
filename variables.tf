@@ -89,3 +89,15 @@ variable "vault_storage_bucket_location" {
   type        = string
   default     = "US"
 }
+
+variable "cloudrun_cpu" {
+  description = "CPU allocation for cloudrun"
+  type        = string
+  default     = "1000m"
+}
+
+variable "cloudrun_mem" {
+  description = "Memory allocation for cloudrun"
+  type        = string
+  default     = "256Mi"
+}

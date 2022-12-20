@@ -32,7 +32,7 @@ locals {
 }
 
 resource "random_id" "vault" {
-  byte_length = 2
+  byte_length = 8
 }
 
 resource "google_service_account" "vault" {
@@ -124,8 +124,8 @@ resource "google_cloud_run_service" "default" {
         }
         resources {
           limits = {
-            "cpu"    = "1000m"
-            "memory" = "256Mi"
+            "cpu"    = var.cloudrun_cpu
+            "memory" = var.cloudrun_mem
           }
           requests = {}
         }

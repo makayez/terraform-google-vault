@@ -32,6 +32,8 @@ following Google Cloud resources:
   - [`vault_kms_key_protection_level`](#vault_kms_key_protection_level-optional)
   - [`vault_service_account_id`](#vault_service_account_id-optional)
   - [`vault_storage_bucket_name`](#vault_storage_bucket_name-optional)
+  - [`cloudrun_cpu`](#cloudrun_cpu-optional)
+  - [`cloudrun_mem`](#cloudrun_mem-optional)
 - [Security Concerns](#security-concerns)
 - [Caveats](#caveats)
   - [Google Cloud Container Registry](#google-cloud-container-registry)
@@ -174,6 +176,14 @@ deploying Vault, read
 - Storage bucket name to be used.
   - default - `"${var.name}-${lower(random_id.vault.hex)}-bucket"`
 
+### `cloudrun_cpu` (optional)
+- Cloud Run CPU allocation
+  - default - `"1000m"`
+
+### `cloudrun_mem` (optional)
+- Cloud Run memory allocation
+  - default - `"256Mi"`
+
 ## Security Concerns
 
 The following things may be of concern from a security perspective:
@@ -198,7 +208,7 @@ A quick way to get Vault into GCR for a GCP project:
 
 ```
 gcloud auth configure-docker
-docker pull hashicorp/vault:latest
-docker tag hashicorp/vault:1.6.1 gcr.io/{{ project_id }}/vault:1.6.1
-docker push gcr.io/{{ project_id }}/vault:1.6.1
+docker pull hashicorp/vault:1.12.2
+docker tag hashicorp/vault:1.12.2 gcr.io/tae-foundational-services-gcp/vault:1.12.2
+docker push gcr.io/tae-foundational-services-gcp/vault:1.12.2
 ```
